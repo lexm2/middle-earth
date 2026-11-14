@@ -79,10 +79,6 @@ public class NpcEntityRenderer extends BipedEntityRenderer<NpcEntity, NpcEntityR
         MinecraftClient client = MinecraftClient.getInstance();
         Camera camera = client.gameRenderer.getCamera();
         return (float)camera.getPos().distanceTo(entityPos);
-        // Keep in case it's needed
-        /*int currentFov = client.options.getFov().getValue();
-        double fovRatio = currentFov / 90.0;
-        return (float) (distance * fovRatio);*/
     }
 
     @Override
