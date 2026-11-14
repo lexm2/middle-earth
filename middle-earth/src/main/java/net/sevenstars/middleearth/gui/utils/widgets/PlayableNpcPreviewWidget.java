@@ -121,7 +121,7 @@ public class PlayableNpcPreviewWidget extends CustomWidget {
             haveBeenInitialized = true;
 
         NpcEntity npcEntity = new NpcEntityBuilder(world, null)
-                .withNpcType(npcDataIdentifier)
+                .withNpcClass(npcDataIdentifier)
                 .forceBuild();
         npcEntity.prepare();
         npcEntity.setAiDisabled(deactivatedAI);

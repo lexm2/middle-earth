@@ -20,34 +20,34 @@ import net.sevenstars.middleearth.item.EggItemsME;
 import net.sevenstars.middleearth.item.dataComponents.FactionDataComponent;
 import net.sevenstars.middleearth.item.dataComponents.RaceDataComponent;
 import net.sevenstars.middleearth.registries.DynamicRegistriesME;
-import net.sevenstars.middleearth.resources.datas.npc_types.NpcType;
+import net.sevenstars.middleearth.resources.datas.npc_classes.NpcClass;
 
 import java.util.List;
 
 public class NpcSpawnEggHelper {
-    public static ItemStack getSpawnEgg(NpcType npcType, RegistryWrapper.WrapperLookup wrapper) {
-        if(npcType == null)
+    public static ItemStack getSpawnEgg(NpcClass npcClass, RegistryWrapper.WrapperLookup wrapper) {
+        if(npcClass == null)
             return ItemStack.EMPTY;
-        return buildItemStackBasedOnNpcData(npcType, wrapper);
+        return buildItemStackBasedOnNpcData(npcClass, wrapper);
     }
 
     public static ItemStack getSpawnEgg(World world, Identifier identifier) {
-        NpcType npcType = world.getRegistryManager().getOrThrow(DynamicRegistriesME.NPC_TYPE).get(identifier);
+        NpcClass npcClass = world.getRegistryManager().getOrThrow(DynamicRegistriesME.NPC_CLASS).get(identifier);
         RegistryWrapper.WrapperLookup wrapperLookup = world.getRegistryManager();
-        return buildItemStackBasedOnNpcData(npcType, wrapperLookup);
+        return buildItemStackBasedOnNpcData(npcClass, wrapperLookup);
     }
 
-    private static ItemStack buildItemStackBasedOnNpcData(NpcType npcType, RegistryWrapper.WrapperLookup wrapper) {
-        if(npcType == null)
+    private static ItemStack buildItemStackBasedOnNpcData(NpcClass npcClass, RegistryWrapper.WrapperLookup wrapper) {
+        if(npcClass == null)
             return ItemStack.EMPTY;
 
-        Identifier itemId = MiddleEarth.appendSuffix(npcType.getId(), "_spawn_egg");
+        Identifier itemId = MiddleEarth.appendSuffix(npcClass.getId(), "_spawn_egg");
         ItemStack itemStack = new ItemStack(EggItemsME.NPC_SPAWN_EGG);
 
         NbtCompound compoundData = new NbtCompound();
         compoundData.putString("id", MiddleEarth.id("npc").toString());
 
-        NpcInitializationData npcInitializationData = new NpcInitializationData(npcType.getId(), false);
+        NpcInitializationData npcInitializationData = new NpcInitializationData(npcClass.getId(), false);
 
         RegistryOps<NbtElement> ops = RegistryOps.of(
                 NbtOps.INSTANCE,
@@ -60,13 +60,13 @@ public class NpcSpawnEggHelper {
         compoundData.put(NpcEntity.KeyStrings.INITIALIZATION_DATA, element);
 
         itemStack.set(DataComponentTypes.ENTITY_DATA, NbtComponent.of(compoundData));
-        itemStack.set(DataComponentTypesME.FACTION_DATA, new FactionDataComponent(npcType.getFactionIdentifier()));
-        itemStack.set(DataComponentTypesME.RACE_DATA, new RaceDataComponent(npcType.getRace()));
+        itemStack.set(DataComponentTypesME.FACTION_DATA, new FactionDataComponent(npcClass.getFactionIdentifier()));
+        itemStack.set(DataComponentTypesME.RACE_DATA, new RaceDataComponent(npcClass.getRace()));
         itemStack.set(DataComponentTypes.ITEM_NAME, Text.translatable(itemId.toTranslationKey("item")));
         itemStack.set(DataComponentTypes.CUSTOM_MODEL_DATA, new CustomModelDataComponent(
                 List.of(),
                 List.of(),
-                List.of(npcType.getId().getPath().replaceAll("\\.", "_") + "_spawn_egg"),
+                List.of(npcClass.getId().getPath().replaceAll("\\.", "_") + "_spawn_egg"),
                 List.of()));
 
         return itemStack;
