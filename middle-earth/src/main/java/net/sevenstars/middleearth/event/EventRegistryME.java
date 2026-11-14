@@ -25,6 +25,7 @@ import net.sevenstars.middleearth.MiddleEarth;
 import net.sevenstars.middleearth.config.ServerConfigME;
 import net.sevenstars.middleearth.enchantments.EnchantmentsME;
 import net.sevenstars.middleearth.item.ResourceItemsME;
+import net.sevenstars.middleearth.item.items.BuildersToolItem;
 import net.sevenstars.middleearth.resources.StateSaverAndLoader;
 import net.sevenstars.middleearth.resources.datas.races.RaceUtil;
 import net.sevenstars.middleearth.resources.persistent_datas.PlayerData;
@@ -42,6 +43,7 @@ public class EventRegistryME {
     public static void register(){
         RoutineSites.register();
         FollowHerderGoal.register();
+        BuildersToolItem.register();
         ServerPlayConnectionEvents.JOIN.register((serverPlayNetworkHandler, packetSender, minecraftServer) -> {
             ServerPlayerEntity player = serverPlayNetworkHandler.getPlayer();
             MiddleEarthHeightMap.setSeed(player.getWorld().getSeed());
