@@ -108,6 +108,8 @@ public class MiddleEarthClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        if(net.sevenstars.middleearth.dev.NpcDebug.ENABLED)
+            net.sevenstars.middleearth.dev.NpcDebugRenderer.register();
         AtlasesME.registerAtlas();
         ClientNetworkHandlerME.register(new ConnectionToServer());
 
@@ -135,7 +137,6 @@ public class MiddleEarthClient implements ClientModInitializer {
         EntityRendererRegistry.register(EntitiesME.SPAWN_OF_SHELOB, SpawnOfShelobRenderer::new);
         //EntityRendererRegistry.register(EntitiesME.BALROG, BalrogRenderer::new);
 
-
         EntityRendererRegistry.register(EntitiesME.FIRE_OF_ORTHANC, FireOfOrthancEntityRenderer::new);
         EntityRendererRegistry.register(EntitiesME.PEBBLE, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(EntitiesME.PINECONE, FlyingItemEntityRenderer::new);
@@ -146,7 +147,6 @@ public class MiddleEarthClient implements ClientModInitializer {
         EntityRendererRegistry.register(EntitiesME.WEB, FlyingItemEntityRenderer::new);
 
         EntityRendererRegistry.register(EntitiesME.NPC, NpcEntityRenderer::new);
-
 
         EntityRendererRegistry.register(EntitiesME.SEAT_ENTITY, SeatRenderer::new);
         //HandledScreens.register(ModScreenHandlers.CROCKPOT_SCREEN_HANDLER, CrockpotScreen::new);
@@ -190,7 +190,6 @@ public class MiddleEarthClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(ROUND_SHIELD_LAYER, RoundShieldEntityModel::getTexturedModelData);
 
         EntityModelLayerRegistry.registerModelLayer(HELD_BANNER_LAYER, HeldBannerEntityModel::getTexturedModelData);
-
 
         SpecialModelTypes.ID_MAPPER.put(Identifier.of(MiddleEarth.MOD_ID, "held_banner"), HeldBannerModelRenderer.Unbaked.CODEC);
 
@@ -671,7 +670,6 @@ public class MiddleEarthClient implements ClientModInitializer {
 
         BlockRenderLayerMap.putBlock(DecorativeBlockRegistryME.ARKENSTONE, BlockRenderLayer.TRANSLUCENT);
         BlockRenderLayerMap.putBlock(DecorativeBlockRegistryME.WALL_ARKENSTONE, BlockRenderLayer.TRANSLUCENT);
-
 
         SimpleWoodChairModel.vanillaChairs.forEach(block -> {
             BlockRenderLayerMap.putBlock(block.base(), BlockRenderLayer.CUTOUT);
