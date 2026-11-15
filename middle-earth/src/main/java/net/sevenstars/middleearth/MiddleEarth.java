@@ -39,7 +39,6 @@ import net.sevenstars.middleearth.world.biomes.surface.MapBiomeData;
 import net.sevenstars.middleearth.world.dimension.DimensionRegistryME;
 import net.sevenstars.middleearth.world.gen.CustomWorldGeneration;
 import net.sevenstars.middleearth.world.map.MiddleEarthMapGeneration;
-import net.sevenstars.middleearth.world.spawners.EntitySpawningME;
 
 public class MiddleEarth implements ModInitializer {
 	public static final String MOD_ID = "middle-earth";
@@ -108,7 +107,6 @@ public class MiddleEarth implements ModInitializer {
 
 
 		EntitiesME.registerModEntities();
-		EntitySpawningME.addSpawns();
 
 		// Entity AI
 		SensorsME.registerModSensors();
