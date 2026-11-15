@@ -74,7 +74,6 @@ import net.sevenstars.middleearth.gui.artisantable.ArtisanTableScreen;
 import net.sevenstars.middleearth.gui.forge.ForgeAlloyingScreen;
 import net.sevenstars.middleearth.gui.inscriptiontable.InscriptionTableScreen;
 import net.sevenstars.middleearth.gui.shapinganvil.ShapingAnvilScreen;
-import net.sevenstars.middleearth.gui.structuremanager.StructureManagerScreen;
 import net.sevenstars.middleearth.gui.structuremanager.structuremarker.StructureMarkerScreen;
 import net.sevenstars.middleearth.gui.wood_pile.WoodPileScreen;
 import net.sevenstars.middleearth.item.EquipmentItemsME;
@@ -156,7 +155,6 @@ public class MiddleEarthClient implements ClientModInitializer {
         HandledScreens.register(ScreenHandlerRegistryME.INSCRIPTION_SCREEN_HANDLER, InscriptionTableScreen::new);
         HandledScreens.register(ScreenHandlerRegistryME.TREATED_ANVIL_SCREEN_HANDLER, ShapingAnvilScreen::new);
         HandledScreens.register(ScreenHandlerRegistryME.WOOD_PILE_SCREEN_HANDLER, WoodPileScreen::new);
-        HandledScreens.register(ScreenHandlerRegistryME.STRUCTURE_MANAGER_SCREEN_HANDLER, StructureManagerScreen::new);
         HandledScreens.register(ScreenHandlerRegistryME.STRUCTURE_MARKER_SCREEN_HANDLER, StructureMarkerScreen::new);
         HandledScreens.register(ScreenHandlerRegistryME.BED_TAG_SCREEN_HANDLER, net.sevenstars.middleearth.gui.structuremanager.bedtag.BedTagScreen::new);
 
